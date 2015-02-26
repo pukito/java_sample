@@ -1,0 +1,25 @@
+import java.sql.*;
+import javax.swing.*;
+
+public class PostgresConexion {
+    
+    Connection conexion = null;
+    
+    public static Connection conectarDB(){
+      try {
+        Class.forName("org.postgresql.Driver");
+        
+        String shost = "jdbc:postgresql://localhost:5432/db_sample";
+        String susuario = "usuario_db";
+        String scontrasenya = "usuario123";
+        
+        Connection con = DriverManager.getConnection(shost, susuario, scontrasenya);
+        JOptionPane.showMessageDialog(null,"Conexión Establecida");
+        return con;
+      }
+      catch(Exception err){
+        JOptionPane.showMessageDialog(null, err);
+        return null;
+      }
+    }
+}
